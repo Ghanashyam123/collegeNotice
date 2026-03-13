@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if(isset($_SESSION['username'])){
+    header("Location:dashboard.php");
+}else{
   $username ="";
   $password = "";
   $msg1 = "";
@@ -31,7 +35,6 @@ $username = filterData($_POST['txtusername']);
   }
 
 }
-
 function filterData($data){
             // checking data filtering 
       $data = trim($data);
@@ -84,3 +87,5 @@ function filterData($data){
 
     </script>
 </html>
+
+<?php } ?>

@@ -1,10 +1,31 @@
 <?php
+session_start();
+if(isset($_SESSION['username'])){
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $img = $_POST['image'];
-// connection
+    $img = $_FILES['image'];
 
+     // file uploading 
+     if(isset($_FILES['image'])){
+        $uploadDirectory = 'images/';
+        $fileName = basename($_FILES['image']['name']);
+        $targetFilePath = $uploadDirectory . $fileName;
+        move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath);
+     }
+
+   $conn = mysqli_connect("localhost","root","root","notice"); 
+   
+   $sql = "INSERT INTO noticeRecord(title,description,image) VALUES('$title','$description','$fileName')";
+
+   $res = mysqli_query($conn,$sql);
+   if(!$res){
+    die("Sorry");
+   }else{
+    echo "Data inserted...";
+   }
+
+   
 
 }
     ?>
@@ -20,8 +41,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
     <h2>Add NEw Notice </h2>
-    <button>Back</button>
-     <form method="post" action="">
+    <a href="dashboard.php"><button>Viewe All Notice</button> </a>
+     <form method="post" action="" enctype="multipart/form-data">
     <fieldset>
         <legend>Add new</legend>
         <label>Title</label>
@@ -35,3 +56,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
      </form>
 </body>
 </html>
+
+<?php }else{
+    header("Location:index.php");
+}
+?>

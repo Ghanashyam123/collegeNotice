@@ -1,3 +1,10 @@
+<?php 
+   $conn = mysqli_connect("localhost","root","root","notice"); 
+    $sql = "SELECT * FROM noticeRecord";
+    $res = mysqli_query($conn,$sql);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +13,8 @@
     <title>College Notice Board</title>
     <style>
         .notice-title{
+            margin-left:500px;
+            margin-top: 20px;
             width: 300px;
             height: 300px;
             border: groove red 2px;
@@ -22,12 +31,19 @@
 </style>
 </head>
 <body>
+    <center>
+        <h1>All notices </h1>
+    </center> 
+<?php 
+  while($row=mysqli_fetch_assoc($res)){
+    ?>
     <div class="notice-title">
-        <h2>VAC Notice Borad</h2>
+        <h2><?php echo $row['title'];?></h2>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta enim cum iusto corrupti facilis eaque, repellendus animi nulla ipsa velit voluptate, fugit ducimus odit saepe commodi nesciunt eligendi eos at.
+            <?php echo $row['description'];?>
         </p>
-        <img src="" width="100" height="100" />
+        <img src="admin/images/<?php echo $row['image'];?>" width="100" height="100" />
     </div> 
+ <?php } ?>
 </body>
 </html>
