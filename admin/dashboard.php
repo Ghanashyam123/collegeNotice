@@ -37,8 +37,8 @@ if(isset($_SESSION['username'])){
             <td><?php echo $row['created_at'] ?></td>
             <td><img src="images/<?php echo $row['image'] ?>" height="100" width="100"/></td>
             <td>
-                <button>Edit</button>
-                <button>Delete</button>
+               <a href="editNotice.php"> <button>Edit</button> </a>
+               <a href="deleteNotice.php">  <button>Delete</button> </a>
                 <button>Status </button>
             </td>
         </tr>

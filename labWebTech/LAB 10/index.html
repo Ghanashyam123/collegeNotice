@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies and Error Handling</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Cookies in Javascript</h3>
+      <label for="username"> Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value=""
+        placeholder="Enter your username" />
+      <small id="nameError" style="color: red; font-style: italic"> </small>
+      <br /><br />
+
+      <button onclick="saveCookies()">Save Cookies</button>
+      <button onclick="getCookies()">Get Cookies</button>
+      <button onclick="deleteCookies()">Delete Cookies</button>
+      <p id="cookieData"></p>
+    </div>
+
+    <script>
+      let saveCookies = () => {
+        try {
+          let username = document.getElementById("username").value;
+
+          if (!username) {
+            throw new Error("Please enter a username");
+          }
+
+          //cookies
+          document.cookie = `username=${username}; path=/;`; // 1 hour expiration
+          alert("Cookies saved successfully!");
+        } catch (error) {
+          document.getElementById("nameError").innerText = error.message;
+        }
+      };
+
+      //get cookies
+
+      let getCookies = () => {
+        try {
+          let cookieData = document.cookie.split("; ");
+          let username = cookieData.find((cookie) =>
+            cookie.startsWith("username=")
+          );
+          if (username) {
+            username = username.split("=")[1];
+            document.getElementById(
+              "cookieData"
+            ).innerText = `Username: ${username}`;
+          } else {
+            throw new Error("No cookies found");
+          }
+        } catch (error) {
+          document.getElementById("nameError").innerText =
+            "Error: " + error.message;
+        }
+      };
+
+      //delete cookies
+      let deleteCookies = () => {
+        try {
+          document.cookie =
+            "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          alert("Cookies deleted successfully!");
+          document.getElementById("cookieData").innerText = "";
+        } catch (error) {
+          document.getElementById("nameError").innerText =
+            "Error: " + error.message;
+        }
+      };
+    </script>
+  </body>
+</html>

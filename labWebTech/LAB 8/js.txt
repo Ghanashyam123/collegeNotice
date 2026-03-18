@@ -1,0 +1,44 @@
+document.querysecector
+document.querysecectorall
+
+Content change
+.innerText="";  only text change
+.innerHtml="";  overall html element change
+
+changing attribute
+.src="new-image.jpg";
+
+changing style
+.style.color="red";
+.style.fontSize="40px";
+
+
+
+let newPara= document.createElement("p");
+newPara.innerText="My name is Nishan Dhakal";
+document.body.appendChid(newPara)
+
+
+removing element
+let element= document.getELementById("demo");
+element.remove();
+
+Handling event
+
+Click event
+document.getELementById().addEventListner("click",function(
+    {
+
+    }
+))
+
+Movehover element
+document.getELementById().addEventListner("mouseover",function(){
+
+})
+this.style.color="blue
+keypress Event
+
+document.addEventListner("keypress",function(event){
+    console.log("Key Presses" + event.key)
+})

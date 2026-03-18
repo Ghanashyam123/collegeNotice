@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Elements</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    ">
+    <form
+      action=""
+      onsubmit="submitForm(event)"
+      id="UserForm"
+      style="
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 500px;
+        margin: auto;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      ">
+      <h2 style="text-align: center; color: #333">User Form</h2>
+
+      <label
+        for="username"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Username:</label
+      >
+      <input
+        type="text"
+        name="username"
+        id="username"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        " /><br />
+
+      <label
+        for="email"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Email:</label
+      >
+      <input
+        type="email"
+        name="email"
+        id="email"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        " /><br />
+      <label
+        for="password"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Password:</label
+      >
+      <input
+        type="password"
+        name="password"
+        id="password"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        " /><br />
+
+      <!-- radio buttons -->
+      <label style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Gender:</label
+      >
+      <input
+        type="radio"
+        name="gender"
+        id="Male"
+        value="Male"
+        style="margin-right: 10px" />
+      Male
+      <input
+        type="radio"
+        name="gender"
+        id="Female"
+        value="Female"
+        style="margin-right: 10px" />
+      Female
+      <input type="radio" name="gender" id="Others" value="Others" />
+      Others<br /><br />
+
+      <!-- checkboxes -->
+      <label style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Hobbies:</label
+      >
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="Playing"
+        value="Playing"
+        style="margin-right: 10px" />
+      Playing
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="Singing"
+        value="Singing"
+        style="margin-right: 10px" />
+      Singing
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="Dancing"
+        value="Dancing"
+        style="margin-right: 10px" />
+      Dancing
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="Reading"
+        value="Reading"
+        style="margin-right: 10px" />
+      Reading
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="Travelling"
+        value="Travelling" />
+      Travelling<br /><br />
+
+      <!--Select Option-->
+      <label
+        for="country"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Country:</label
+      >
+      <select
+        name="Country"
+        id="country"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        ">
+        <option value="Nepal">Nepal</option>
+        <option value="USA">USA</option>
+        <option value="China">China</option>
+        <option value="Japan">Japan</option></select
+      ><br />
+
+      <label
+        for="description"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Description:</label
+      >
+      <textarea
+        name="Description"
+        id="description"
+        rows="6"
+        cols="20"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "></textarea
+      ><br />
+      <label
+        for="file"
+        style="display: block; margin-bottom: 5px; font-weight: bold"
+        >Upload CV:</label
+      >
+      <input
+        type="file"
+        name="file"
+        id="file"
+        style="
+          margin-bottom: 15px;
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        " /><br />
+
+      <input
+        type="submit"
+        value="Submit"
+        style="
+          padding: 10px 20px;
+          width: 100%;
+          border: none;
+          background-color: #4caf50;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 4px;
+        " />
+    </form>
+
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        const formData = new FormData(document.getElementById("UserForm"));
+        const entries = Array.from(formData.entries());
+        alert(
+          "Form Submitted Successfully!\n" +
+            entries.map(([key, value]) => `${key}: ${value}`).join("\n")
+        );
+      }
+    </script>
+  </body>
+</html>

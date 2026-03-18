@@ -1,0 +1,200 @@
+<!-- Title: LAB 4 
+Fundamentals and Styling BasicsObjective:
+1. TO understand CSS syntax and how to insert CSS using inline, internal, and external methods.
+2. TO apply styling using CSS selectors (ID,Class) and explore properties like coolors and backgrounds,borders,text,fonts and more.
+3. To learn the CSS Box Model and how to create layouts using margin, padding, and borders. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Basics</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      p {
+        color: rgb(196, 35, 35);
+        font-size: 20px;
+        /* font-family: "Courier New", Arial, sans-serif; */
+      }
+      .internal-css {
+        font-size: 16px;
+        background-color: lightgray;
+        padding: 20px;
+        margin: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+      .internal-css p {
+        color: blue;
+      }
+
+      #id-selector {
+        font-size: 16px;
+        background-color: lightgray;
+        padding: 20px;
+        margin: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+
+      /* Universasl Selector  */
+      * {
+        margin: 10;
+        padding: 10;
+        /* background-color: lightgray; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- css syntax  -->
+    <h1>To test CSS Syntax</h1>
+    <!-- Inserting CSS  -->
+    <!-- 1. Inline CSS  -->
+    <p style="font-size: 20px; color: blue">
+      CSS (Cascading Style Sheets) is a stylesheet language used to describe the
+      presentation and layout of web pages.
+    </p>
+
+    <!-- Internal CSS  -->
+    <!-- Class selector  -->
+    <div class="internal-css">
+      <h3>Internal CSS Class Selector</h3>
+      <p>
+        Internal CSS are used to style the HTML element within same HTMl page.
+        Inside the header section we declare our css property.It is declared
+        using # symbol.
+      </p>
+    </div>
+
+    <!-- ID selector  -->
+    <div id="id-selector">
+      <h3>Internal CSS ID Selector</h3>
+      <p>
+        ID selector is used to style the HTML element with unique id. It is
+        declared using # symbol.
+      </p>
+    </div>
+
+    <!-- External Css  -->
+
+    <div class="external-css">
+      <h3>External CSS</h3>
+      <p style="color: navy">
+        External CSS are used to style the HTML element within different HTML
+        page. It is declared using link tag.
+      </p>
+    </div>
+
+    <div class="css-boxmodel">
+      <h3>CSS Box Model</h3>
+      <p>
+        The CSS box model is a box that wraps around every HTML element. It
+        consists of: margins, borders, padding, and the actual content.
+      </p>
+    </div>
+
+    <div class="containers">
+      <div class="font1">
+        <h3>CSS Text</h3>
+        <article>
+          The CSS text properties allow you to set the color, size, and spacing
+          of text.
+        </article>
+      </div>
+
+      <div class="font2">
+        <h3>CSS Colors</h3>
+        <article>
+          CSS allows you to set text and background colors using various color
+          formats.
+        </article>
+      </div>
+
+      <div class="font3">
+        <h3>CSS Borders</h3>
+        <article>
+          Borders can be customized using width, style, color, and radius for
+          rounded edges.
+        </article>
+      </div>
+    </div>
+
+    <div id="text">
+      <h3>Text Styling Demonistration</h3>
+
+      <article>
+        This is a text styling demonstration. The text properties are used to
+        control the text appearance. The CSS text properties allow you to set
+        the color, size, and spacing of text.
+      </article>
+    </div>
+
+    <!-- list  -->
+    <div id="list">
+      <h3>Order List</h3>
+      <ol>
+        <li>Frontend</li>
+        <ol>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ol>
+        <li>Backend</li>
+        <ol class="backend">
+          <li>Node.js</li>
+          <li>PHP</li>
+          <li>Python</li>
+        </ol>
+      </ol>
+    </div>
+
+    <!-- table  -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Course</th>
+          <th>University</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Amit</td>
+          <td>Computer Science</td>
+          <td><a href="https://iost.tu.edu.np/" target="_blank">TU</a></td>
+        </tr>
+        <tr>
+          <td>Nishan</td>
+          <td>BSc</td>
+          <td>PU</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- text wrap  -->
+    <div class="container">
+      <h2 class="wrap" contenteditable="true">
+        This is a text wrapping demonstration. The text properties are used to
+        control the text appearance.
+      </h2>
+      <h2 class="nowrap">
+        Using this property header content is not wrapped and overflowe the
+        container.
+      </h2>
+      <h2 class="balance">
+        In this case the text in the heading is balanced accross the container.
+      </h2>
+    </div>
+
+    <!-- scrolling   -->
+    <div class="scroll">
+      <h3>Scrolling Demonistration</h3>
+      <article>
+        This is a scrolling demonstration. The overflow property specifies what
+        happens if content overflows an element's box. This property specifies
+        if the content is clipped or if it flows over the border.
+      </article>
+    </div>
+  </body>
+</html>

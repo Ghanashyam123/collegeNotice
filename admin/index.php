@@ -23,11 +23,11 @@ $username = filterData($_POST['txtusername']);
   $conn = mysqli_connect("localhost","root","root","notice");
     
   $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-
+   
   $result = mysqli_query($conn,$sql);
   if(mysqli_num_rows($result)>0){
-            // session start
-            session_start();
+          
+           
             $_SESSION['username'] = $username;
             header("Location:dashboard.php");
   }else{

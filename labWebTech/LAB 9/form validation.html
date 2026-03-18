@@ -1,0 +1,198 @@
+<!--Full name (text)-> only letters and spaces minimum 3 character
+     Email (email)-> valid email format
+     Password (password)-> minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
+     Age (number)-> only numbers between 18 and 99
+     Phone number (Phone)-> valid phone number format (10 numbers)
+     DOB-> Must selected
+     Gender-> Must selected // radio button
+     Country-> Must selected // select box
+     Terms and conditions-> Must checked // checkbox
+     Submit button->On click, validate the form and display an alert with the message "Form submitted successfully!" 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+      }
+      .container {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <div class="container">
+        <h2>Form Validation</h2>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Full Name" />
+        <small id="nameError" class="error"></small>
+        <br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email" />
+        <small id="emailError" class="error"></small>
+        <br /><br />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Password" />
+        <small id="passwordError" class="error"></small>
+        <br /><br />
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Age" />
+        <small id="ageError" class="error"></small>
+        <br /><br />
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Phone Number" />
+        <small id="phoneError" class="error"></small>
+        <br /><br />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" />
+        <small id="dobError" class="error"></small>
+        <br /><br />
+
+        <label>Gender:</label><br />
+        <input type="radio" name="gender" value="male" id="male" />
+        <label for="male">Male</label>
+        <input type="radio" name="gender" value="female" id="female" />
+        <label for="female">Female</label>
+        <small id="genderError" class="error"></small>
+        <br /><br />
+
+        <label for="country">Country:</label>
+        <select id="country">
+          <option value="">Select Country</option>
+          <option value="nepal">Nepal</option>
+          <option value="india">India</option>
+          <option value="china">China</option>
+          <option value="usa">USA</option>
+        </select>
+        <small id="countryError" class="error"></small>
+        <br /><br />
+
+        <input type="checkbox" id="terms" /> 
+        <label for="terms">I agree to terms and conditions</label>
+        <small id="termsError" class="error"></small>
+        <br /><br />
+
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          // Regular Expressions
+          const nameRegex = /^[a-zA-Z\s]{3,}$/;
+          const emailRegex = /^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          const passwordRegex =
+            /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$/;
+          const phoneRegex = /^(98|97)[0-9]{8}$/;
+
+          // Full Name Validation
+          let name = document.getElementById("name").value;
+          document.getElementById("nameError").innerText = nameRegex.test(name)
+            ? ""
+            : "Enter a valid name (at least 3 characters)";
+          if (!nameRegex.test(name)) isValid = false;
+
+          // Email Validation
+          let email = document.getElementById("email").value;
+          document.getElementById("emailError").innerText = emailRegex.test(
+            email
+          )
+            ? ""
+            : "Enter a valid email (e.g., name@gmail.com)";
+          if (!emailRegex.test(email)) isValid = false;
+
+          // Password Validation
+          let password = document.getElementById("password").value;
+          document.getElementById("passwordError").innerText =
+            passwordRegex.test(password)
+              ? ""
+              : "Password must contain uppercase, lowercase, number, and special character";
+          if (!passwordRegex.test(password)) isValid = false;
+
+          // Age Validation
+          let age = document.getElementById("age").value;
+          document.getElementById("ageError").innerText =
+            age >= 18 && age <= 99 ? "" : "Enter a valid age (18-99)";
+          if (!(age >= 18 && age <= 99)) isValid = false;
+
+          // Date of Birth Validation
+          let dob = document.getElementById("dob").value;
+          document.getElementById("dobError").innerText = dob
+            ? ""
+            : "Date of Birth must be selected";
+          if (!dob) isValid = false;
+
+          // Phone Number Validation
+          let phone = document.getElementById("phone").value;
+          document.getElementById("phoneError").innerText = phoneRegex.test(
+            phone
+          )
+            ? ""
+            : "Phone number must be 10 digits";
+          if (!phoneRegex.test(phone)) isValid = false;
+
+          // Gender Validation
+          let gender = document.querySelector('input[name="gender"]:checked');
+          document.getElementById("genderError").innerText = gender
+            ? ""
+            : "Gender must be selected";
+          if (!gender) isValid = false;
+
+          // Country Validation
+          let country = document.getElementById("country").value;
+          document.getElementById("countryError").innerText = country
+            ? ""
+            : "Country must be selected";
+          if (!country) isValid = false;
+
+          // Terms & Conditions Validation
+          let terms = document.getElementById("terms").checked;
+          document.getElementById("termsError").innerText = terms
+            ? ""
+            : "You must agree to the terms and conditions";
+          if (!terms) isValid = false;
+
+          // Final Submission Check
+          if (isValid) {
+            alert("Form submitted successfully!");
+            event.target.submit();
+          }
+        });
+    </script>
+  </body>
+</html>

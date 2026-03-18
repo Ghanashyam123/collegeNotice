@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<library
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="complex.xsd">
+	<book>
+		<title>Web Technology</title>
+		<author>Achyut Pandey</author>
+		<genre>Computer Science</genre>
+		<price>1200</price>
+		<pub_date>2021-01-15</pub_date>
+		<description>A comprehensive guide to web development, covering HTML, CSS, JavaScript, and server-side programming.</description>
+	</book>
+	<book>
+		<title>Cryptography</title>
+		<author>William Stallings</author>
+		<genre>Computer Security</genre>
+		<price>1500</price>
+		<pub_date>2018-05-10</pub_date>
+		<description>An in-depth exploration of cryptographic techniques and their applications in securing data and communication.</description>
+	</book>
+</library>

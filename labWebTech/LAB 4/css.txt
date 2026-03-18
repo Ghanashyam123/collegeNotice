@@ -1,0 +1,46 @@
+#CSS Box Model and Positioning (Important for Exams)
+
+*CSS Box Model
+            The CSS Box Model is essential for understanding how elements are structured on a webpage. It consists of:
+
+            Content – The actual text or image inside the box.
+
+            Padding – Space between the content and the border.
+
+            Border – The outline of the box.
+
+            Margin – Space outside the border, separating the element from others.
+
+
+
+*CSS Selectors
+            Selectors are used to target and style specific elements in CSS.
+
+            Universal Selector (*) – Applies styles to all elements.
+
+            Type Selector (h1, h2, p, etc.) – Targets elements by tag name.
+
+            Class Selector (.) – Targets elements with a specific class.
+
+            ID Selector (#) – Targets elements with a specific ID.
+
+            Child Selector (>) – Selects direct child elements. (Example: table > b selects b tags that are direct children of table.)
+
+            Descendant Selector (space) – Selects all elements inside another element. (Example: table b selects all b elements inside any table, not just direct children.)
+
+            Adjacent Sibling Selector (+) – Selects an element immediately following another. (Example: h1 + p selects the p right after an h1.)
+
+
+
+CSS Positioning
+            Positioning defines how elements are placed on the webpage.
+
+            Static – Default position; elements appear in normal document flow.
+
+            Absolute – Positions the element relative to the nearest positioned ancestor (not static). If no ancestor is positioned, it moves relative to the <html> document.
+
+            Relative – Positions the element relative to its normal position.
+
+            Fixed – Positions the element relative to the viewport (browser window) and does not move when scrolling.
+
+            Sticky – Behaves like relative until it reaches a certain scroll position, then it becomes fixed. (Example: A navigation bar that sticks to the top when scrolling.)

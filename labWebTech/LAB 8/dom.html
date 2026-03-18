@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+  </head>
+  <body>
+    <h1 id="main-heading">Document Object Model</h1>
+    <p id="demo">This is Paragraph</p>
+    <img
+      src="https://www.newsx.com/wp-content/uploads/2025/04/Dhonis-Retirement.webp"
+      alt="img"
+      id="imagehere"
+      width="300"
+      height="200" />
+    <br /><br />
+    <button onclick="changeImage()">Change Image</button>
+
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="changeColor()">Change Color</button>
+    <button onclick="changeFont()">Change Font</button>
+    <button onclick="addEvent()">Add Paragraph</button>
+    <button onclick="removeEvent()">Remove Paragraph</button>
+    <button id="myButton">Click me</button>
+  </body>
+
+  <script>
+    // Change the text of the paragraph
+    function changeText() {
+      document.getElementById("demo").innerHTML =
+        "This is a new paragraph with edited text";
+    }
+
+    // Change the image of the image tag
+    function changeImage() {
+      document.getElementById("imagehere").src =
+        "https://c.ndtvimg.com/2025-03/p68eo2ig_virat-kohli-bcci_625x300_17_March_25.jpg?im=FeatureCrop,algorithm=dnn,width=806,height=605";
+    }
+
+    // Change the style of the paragraph
+    function changeStyle() {
+      document.getElementById("demo").style.fontSize = "30px";
+      document.getElementById("demo").style.color = "red";
+    }
+
+    // Change the color of the paragraph
+    function changeColor() {
+      document.getElementById("demo").style.color = "blue";
+    }
+
+    // Change the font of the paragraph
+    function changeFont() {
+      document.getElementById("demo").style.fontFamily = "Arial, sans-serif";
+    }
+
+    // Add an event (new paragraph)
+    function addEvent() {
+      var newElement = document.createElement("p");
+      newElement.innerHTML = "This is a new paragraph added to the document.";
+      newElement.id = "added-paragraph";
+      document.body.appendChild(newElement);
+    }
+
+    // Remove the added paragraph
+    function removeEvent() {
+      var element = document.getElementById("added-paragraph");
+      if (element) {
+        element.parentNode.removeChild(element);
+      }
+    }
+
+    // Add event listener to the button
+    document.getElementById("myButton").addEventListener("click", function () {
+      alert("Button was clicked!");
+    });
+  </script>
+</html>

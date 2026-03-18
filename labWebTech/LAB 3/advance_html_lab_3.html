@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance HTML</title>
+    <style>
+      #displayText {
+        margin-top: 10px;
+        font-size: 18px;
+        color: black;
+      }
+      #hoverSection {
+        padding: 20px;
+        background-color: lightgray;
+        display: inline-block;
+      }
+      #hoverSection:hover {
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to HTML 5</h1>
+      <nav style="font-size: 20px;">
+        <a href="#main-content">Home</a>
+        <a href="#about-section">About</a>
+        <a href="#contact-section">Contact</a>
+        <a href="#canvas-section">Canvas</a>
+        <a href="#media-section">Media</a>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section id="about-section">
+        <h2>HTML 5</h2>
+        <article>
+          <p>
+            HTML (HyperText Markup Language) is the standard markup language
+            used to create and design documents on the World Wide Web.
+          </p>
+        </article>
+        <img src="./photo.jpg" alt="coding" height="250px" width="350px" />
+      </section>
+
+      <section id="media-section">
+        <h2>Multimedia</h2>
+        <h3>Video</h3>
+        <video src="./video.mp4" height="400px" autoplay controls loop>
+          Nature
+        </video>
+        <br />
+        <br><br><br><br>
+        <h3>Audio</h3>
+        <audio src="./audio.mp3" controls autoplay loop>Song</audio>
+      </section>
+
+      <div id="contact-section">
+        <h1>Contact Us</h1>
+        <form style="font-size: 20px;">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required /><br />
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" required></textarea><br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <section id="canvas-section">
+        <div>
+          <h2>Canvas Section</h2>
+          <canvas
+            id="myCanvas"
+            width="400"
+            height="200"
+            style="border: 1px solid black"></canvas
+          ><br />
+          <button
+            style="
+              margin-left: 150px;
+              color: white;
+              padding: 4px;
+              background-color: rgb(47, 107, 227);
+              border: 1px solid black;
+            "
+            onclick="drawCircle()">
+            Draw Circle
+          </button>
+        </div>
+      </section>
+
+      <div>
+        <h2>HTML Events</h2>
+        <form onsubmit="return handleSubmit(event)">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            onchange="handleChange(event)" />
+          <button
+            style="
+              color: white;
+              padding: 4px;
+              background-color: rgb(47, 107, 227);
+              border: 0.5px solid black;
+            "
+            type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+      <div></div>
+      <div>
+        <h2>Live Typing Display</h2>
+        <input type="text" id="liveInput" onkeyup="displayText(event)" />
+        <p id="displayText"></p>
+      </div>
+
+      <div id="hoverSection">Hover over me to change color!</div>
+    </main>
+  </body>
+  <script>
+    function drawCircle() {
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      ctx.arc(200, 100, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = "blue";
+      ctx.stroke();
+      ctx.fill();
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("Form Submitted!");
+    }
+
+    function handleChange(event) {
+      alert(`Input changed to: ${event.target.value}`);
+    }
+
+    function displayText(event) {
+      document.getElementById("displayText").textContent = event.target.value;
+    }
+  </script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>jQuery Lab</title>
+  </head>
+  <body>
+    <h1>jQuery Syntax, Selectors, Events, and Effects</h1>
+
+    <!-- Mouse Event Section -->
+    <h2>Mouse Event</h2>
+    <p>This is a paragraph</p>
+    <span id="color">Change color of paragraph.</span>
+    <p id="test">This is another paragraph with ID</p>
+    <p class="test">This is another paragraph with CLASS</p>
+
+    <button id="hide">Click me to Hide</button>
+    <button id="show">Click me to Show</button>
+    <button id="changeColor">Click me to Change Color</button>
+    <button id="fade">Click me to Fade</button>
+    <button id="slide">Click me to Slide Toggle</button>
+    <button id="animate">Click me to Animate</button>
+    <button id="stop">Stop Animation</button>
+
+    <!-- Keypress Event Section -->
+    <h2>Keypress Event</h2>
+    <label for="Text">Enter text:</label>
+    <input type="text" />
+    <div>Keypress Count: <b>0</b></div>
+
+    <!-- Form Event Section -->
+    <h2>Form Event</h2>
+    <form id="myForm">
+      <label for="username">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Window Event Section -->
+    <h2>Window Event</h2>
+    <p>Resize the window, scroll, switch tabs to see effects!</p>
+    <p id="status">Status will update based on window events...</p>
+
+    <script>
+      $(document).ready(function () {
+        // Basic Effects: Show, Hide
+        $("#hide").click(function () {
+          $("p").hide(1000);
+        });
+
+        $("#show").click(function () {
+          $("p").show(1000);
+        });
+
+        // DOM Manipulation: CSS change
+        $("#changeColor").click(function () {
+          $("#color").css("color", "red");
+        });
+
+        // Fade Effect
+        $("#fade").click(function () {
+          $(".test").fadeToggle(1000);
+        });
+
+        // Slide Effect
+        $("#slide").click(function () {
+          $("#test").slideToggle(1000);
+        });
+
+        // Animate Effect
+        $("#animate").click(function () {
+          $("#p-color").animate(
+            {
+              fontSize: "30px",
+              opacity: 0.5,
+            },
+            1500,
+            function () {
+              alert("Animation Completed!");
+            }
+          );
+        });
+
+        // Stop Animation
+        $("#stop").click(function () {
+          $("#p-color").stop();
+        });
+
+        // Chaining Example
+        $("#changeColor").click(function () {
+          $("#p-color").css("color", "blue").slideUp(800).slideDown(800);
+        });
+
+        // Keypress Event
+        var i = 0;
+        $('input[type="text"]').keypress(function () {
+          i++;
+          $("b").text(i);
+        });
+
+        // Form Event Handling
+        $("#myForm").submit(function (event) {
+          if ($("#name").val() === "") {
+            alert("Please enter your name.");
+            event.preventDefault();
+          } else {
+            alert("Form submitted successfully.");
+          }
+        });
+
+        // Window Events
+        $(window).on({
+          load: function () {
+            $("#status").text("Window Loaded");
+          },
+          resize: function () {
+            $("#status").text("Window Resized: " + $(window).width() + "px");
+          },
+          scroll: function () {
+            $("#status").text(
+              "Window Scrolled: " + $(window).scrollTop() + "px"
+            );
+          },
+          focus: function () {
+            $("#status").text("Window Focused! Welcome back!");
+          },
+          blur: function () {
+            $("#status").text("Window Blurred! You left the page!");
+          },
+          beforeunload: function () {
+            return "Are you sure you want to leave?";
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
